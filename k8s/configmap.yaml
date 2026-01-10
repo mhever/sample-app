@@ -5,5 +5,8 @@ metadata:
 data:
   SERVICE_NAME: "sample-app"
   VERSION: "0.1.0"
-  # Example Postgres DSN. Replace in your environment/secret for production.
-  DB_DSN: "postgres://postgres:password@postgres:5432/postgres?sslmode=disable"
+  DB_HOST: "postgres"
+  DB_PORT: "5432"
+  DB_USER: "postgres"
+  DB_NAME: "postgres"
+  DB_SSLMODE: "disable"

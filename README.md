@@ -16,24 +16,25 @@ Build & run (local)
 ```bash
 go mod tidy
 make build
-SERVICE_NAME=sample-app VERSION=0.1.0 DB_DSN="postgres://postgres:password@localhost:5432/postgres?sslmode=disable" ./bin/sample-app
+SERVICE_NAME=sample-app VERSION=0.1.0 DB_HOST=localhost DB_USER=postgres DB_PASSWORD=password DB_NAME=postgres ./bin/sample-app
 ```
 
 Docker
 
 ```bash
 make docker-build
-docker run --rm -p 8080:8080 -e DB_DSN="postgres://postgres:password@localhost:5432/postgres?sslmode=disable" sample-app:local
+docker run --rm -p 8080:8080 -e DB_HOST=localhost -e DB_USER=postgres -e DB_PASSWORD=password -e DB_NAME=postgres sample-app:local
 ```
 
 Kubernetes (example)
 
 ```bash
 kubectl apply -f k8s/configmap.yaml
+kubectl apply -f k8s/secret.yaml
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 ```
 
 Notes
-- The app expects a Postgres-compatible database configured via `DB_DSN`. For real clusters put credentials in a `Secret` and reference via env.
+- The app expects a Postgres-compatible database configured via environment variables (DB_HOST, DB_USER, DB_PASSWORD, etc.) or a full DB_DSN. For real clusters put credentials in a `Secret` and reference via env.
 - The readiness probe calls `db.Ping()` with a small timeout; if the DB is unreachable the pod will show NotReady.

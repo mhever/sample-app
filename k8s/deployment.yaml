@@ -20,6 +20,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: sample-app-config
+            - secretRef:
+                name: sample-app-secret
           livenessProbe:
             httpGet:
               path: /healthz
