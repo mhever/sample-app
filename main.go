@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -14,6 +13,9 @@ func main() {
 	db, err := connectDB(cfg)
 	if err != nil {
 		log.Printf("warning: db connect failed: %v", err)
+	}
+	if db != nil {
+		defer db.Close()
 	}
 
 	r := gin.New()
@@ -36,11 +38,4 @@ func main() {
 	if err := r.Run(addr); err != nil {
 		log.Fatalf("server failed: %v", err)
 	}
-
-	// ensure DB closed on exit
-	if db != nil {
-		db.Close()
-	}
-	// keep the compiler happy about context import in simple app
-	_ = context.TODO()
 }
