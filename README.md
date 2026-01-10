@@ -8,6 +8,7 @@ Endpoints
 - GET /readyz — readiness probe (returns 200 only when DB reachable)
 - GET /env — shows a small subset of config values (from `ConfigMap`)
 - GET /work?ms=200 — sleeps N ms to simulate latency
+- GET /kill — simulates a crash (panics the process)
 - GET /metrics — Prometheus metrics
 
 Build & run (local)
