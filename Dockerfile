@@ -2,8 +2,10 @@ FROM golang:1.25-alpine AS build
 WORKDIR /src
 COPY go.mod go.sum ./
 RUN go env -w GOPROXY=https://proxy.golang.org
+RUN go mod download
 COPY . .
 RUN apk add --no-cache git build-base
+RUN go test ./...
 RUN go build -o /out/app ./
 
 FROM alpine:latest
