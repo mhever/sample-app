@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: postgres:13  # Use a stable version; adjust if needed
+        image: ghcr.io/cloudnative-pg/postgresql:13
         ports:
         - containerPort: 5432
         env:
