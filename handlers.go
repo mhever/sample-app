@@ -66,5 +66,5 @@ func handleWork(c *gin.Context) {
 }
 
 func handleKill(c *gin.Context) {
-	panic("simulated crash")
+	os.Exit(123)
 }
