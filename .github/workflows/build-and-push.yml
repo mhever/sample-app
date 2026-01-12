@@ -4,9 +4,16 @@ on:
   push:
     branches:
       - main
+    paths: &paths
+      - "**/*.go"
+      - "go.mod"
+      - "go.sum"
+      - "Dockerfile"
+      - ".github/workflows/build-and-push.yml"
   pull_request:
     branches:
       - main
+    paths: *paths
   workflow_dispatch:
 
 permissions:
