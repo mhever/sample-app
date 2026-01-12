@@ -7,3 +7,7 @@ images:
 - name: sample-app
   newName: ghcr.io/mhever/sample-app
   newTag: main
+
+replicas:
+- name: sample-app
+  count: 2
