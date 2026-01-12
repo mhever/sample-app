@@ -10,4 +10,4 @@ images:
 
 replicas:
 - name: sample-app
-  count: 2
+  count: 3
