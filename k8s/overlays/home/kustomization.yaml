@@ -14,10 +14,5 @@ replicas:
 - name: sample-app
   count: 3
 
-spec:
-  template:
-    metadata:
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/path: "/metrics"
-        prometheus.io/port: "8080"
+patchesStrategicMerge:
+  - app-prometheus-annotations-patch.yaml
