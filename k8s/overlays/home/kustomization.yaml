@@ -8,7 +8,7 @@ resources:
 images:
 - name: sample-app
   newName: ghcr.io/mhever/sample-app
-  newTag: sha-bd7b399
+  newTag: sha-6b89aac
 
 replicas:
 - name: sample-app
