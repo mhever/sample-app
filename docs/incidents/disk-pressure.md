@@ -43,3 +43,9 @@ check the system with
 * restart the k3s service with "sudo systemctl restart k3s" to force kubelet to reevaluate node conditions
 * Disk Pressure condition was cleared automatically, taint removed by kubelet
 * "sudo k3s kubectl delete pod --field-selector=status.phase=Failed" to remove the failed pods
+
+# Permanent fix: Tune thresholds in /etc/rancher/k3s/config.yaml
+kubelet-arg:
+  - "eviction-hard=nodefs.available<10Gi,imagefs.available<10Gi"
+  - "eviction-soft=nodefs.available<14Gi,imagefs.available<14Gi"
+  - "eviction-soft-grace-period=nodefs.available=1m,imagefs.available=1m"
