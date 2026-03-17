@@ -8,7 +8,7 @@ resources:
 images:
 - name: sample-app
   newName: ghcr.io/mhever/sample-app
-  newTag: sha-8644a17
+  newTag: does-nut-exist
 
 replicas:
 - name: sample-app
