@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: sample-app
-          image: sample-app:placeholder
+          image: sample-app:sha-8644a17
           ports:
             - containerPort: 8080
           envFrom:
